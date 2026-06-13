@@ -7,7 +7,6 @@ function AllEmployees() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const API_URL = import.meta.env.VITE_API_URL
-  console.log(API_URL)
 
   // Fetch all employees
   const fetchAllEmployees = async () => {

@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: [
       "http://localhost:5173",
-      "https://ems-mern-crud-e5va.vercel.app/"
+      "https://ems-mern-crud-e5va.vercel.app"
     ],
     credentials: true
   }));
@@ -27,9 +27,9 @@ app.get("/", (req, res) => {
 app.use("/employee", employeeRouter);
 
 
-app.listen(port, () => {
-  console.log(`Your App is Running at ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Your App is Running at ${port}`);
+// });
 
 
 module.exports = app;
