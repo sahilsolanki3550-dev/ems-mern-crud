@@ -55,6 +55,8 @@ function AllEmployees() {
       {loading ? (
         <p align="center">Loading employees...</p>
       ) : (
+        <div className="table-container">
+
         <table
           border="1"
           align="center"
@@ -113,6 +115,7 @@ function AllEmployees() {
             )}
           </tbody>
         </table>
+        </div>
       )}
     </>
   );
