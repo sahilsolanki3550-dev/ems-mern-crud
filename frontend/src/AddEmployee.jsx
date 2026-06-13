@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "./Form.css";
 
 function AddEmployee() {
   const [firstName, setFirstName] = useState("");
@@ -20,95 +21,76 @@ function AddEmployee() {
     e.preventDefault();
     try {
       const data = { firstName, lastName, email, contact, designation };
-      const response = await axios.post(
-        "http://127.0.0.1:5000/employee/store",
-        data
-      );
+      await axios.post("http://127.0.0.1:5000/employee/store", data);
       alert("New Employee Added Successfully");
       resetForm();
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
-    <>
-      <h2
-        align="center"
-        style={{ position: "relative", top: "30px", right: "50px" }}
-      >
-        Add New Employee
-      </h2>
-      <form onSubmit={submitHandler}>
-        <table align="center" cellPadding={10} cellSpacing={0}>
-          <tr>
-            <td>First Name</td>
-            <td>
-              <input
-                type="text"
-                id="fname"
-                name="fname"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>last Name</td>
-            <td>
-              <input
-                type="text"
-                id="lname"
-                name="lname"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Contact</td>
-            <td>
-              <input
-                type="text"
-                id="contact"
-                name="contact"
-                value={contact}
-                onChange={(e) => setContact(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Designation</td>
-            <td>
-              <input
-                type="text"
-                id="designation"
-                name="designation"
-                value={designation}
-                onChange={(e) => setDesignation(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2} align="center">
-              <input type="submit" id="submit" name="submit" value="Submit" />
-            </td>
-          </tr>
-        </table>
-      </form>
-    </>
+    <div className="form-wrapper">
+      <div className="form-card">
+        <h2>Add New Employee</h2>
+
+        <form onSubmit={submitHandler}>
+          <div className="form-group">
+            <label>First Name</label>
+            <input
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Last Name</label>
+            <input
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Contact</label>
+            <input
+              type="text"
+              value={contact}
+              onChange={(e) => setContact(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Designation</label>
+            <input
+              type="text"
+              value={designation}
+              onChange={(e) => setDesignation(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="submit-btn">
+            Add Employee
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 
