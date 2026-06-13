@@ -21,9 +21,9 @@ app.get("/", (req, res) => {
 app.use("/employee", employeeRouter);
 
 
-// app.listen(port, () => {
-//   console.log(`Your App is Running at ${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Your App is Running at ${port}`);
+});
 
 
 module.exports = app;

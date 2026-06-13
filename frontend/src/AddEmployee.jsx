@@ -8,6 +8,7 @@ function AddEmployee() {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [designation, setDesignation] = useState("");
+    const API_URL = import.meta.env.VITE_API_URL
 
   const resetForm = () => {
     setFirstName("");
@@ -21,7 +22,7 @@ function AddEmployee() {
     e.preventDefault();
     try {
       const data = { firstName, lastName, email, contact, designation };
-      await axios.post("http://127.0.0.1:5000/employee/store", data);
+      await axios.post(`${API_URL}/employee/store`, data);
       alert("New Employee Added Successfully");
       resetForm();
     } catch (error) {

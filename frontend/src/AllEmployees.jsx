@@ -6,12 +6,14 @@ import "./AllEmployee.css"
 function AllEmployees() {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
+  const API_URL = import.meta.env.VITE_API_URL
+  console.log(API_URL)
 
   // Fetch all employees
   const fetchAllEmployees = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:5000/employee/all"
+        `${API_URL}/employee/all`
       );
 
       // IMPORTANT: backend sends { result: [...] }
@@ -33,7 +35,7 @@ function AllEmployees() {
 
     try {
       await axios.delete(
-        `http://127.0.0.1:5000/employee/delete/${id}`
+        `${API_URL}/employee/delete/${id}`
       );
       fetchAllEmployees(); // refresh list
     } catch (error) {

@@ -9,6 +9,7 @@ function EditEmployee() {
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
   const [designation, setDesignation] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function EditEmployee() {
   const fetchOneDetails = async () => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:5000/employee/edit/${id}`
+        `${API_URL}/employee/edit/${id}`
       );
       const emp = response.data.result;
       setFirstName(emp.firstName);
@@ -38,7 +39,7 @@ function EditEmployee() {
     try {
       const data = { firstName, lastName, email, contact, designation };
       await axios.put(
-        `http://127.0.0.1:5000/employee/update/${id}`,
+        `${API_URL}/employee/update/${id}`,
         data
       );
       alert("Employee Updated Successfully");
