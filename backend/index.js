@@ -8,7 +8,13 @@ const employeeRouter = require("./routers/employeeRouter");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+    origin: [
+      "http://localhost:5173",
+      "https://ems-mern-crud-e5va.vercel.app/"
+    ],
+    credentials: true
+  }));
 
 
 
